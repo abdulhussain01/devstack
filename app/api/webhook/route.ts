@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 import { Webhook } from "svix";
 import { headers } from "next/headers";
@@ -69,7 +71,7 @@ export async function POST(req: Request) {
       picture: image_url,
     });
 
-    return new Response({message:"ok",user:mongoUser}, { status: 200 });
+    return  NextResponse.json({message:"ok",user:mongoUser}, { status: 200 });
   }
   else if (eventType === "user.updated") {
     const { id, email_addresses, image_url, username, first_name, last_name } =
