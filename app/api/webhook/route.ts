@@ -71,9 +71,9 @@ export async function POST(req: Request) {
       picture: image_url,
     });
 
-    return  NextResponse.json({message:"ok",user:mongoUser}, { status: 200 });
+    return  NextResponse.json({message:"ok",user:mongoUser});
   }
-  else if (eventType === "user.updated") {
+  if (eventType === "user.updated") {
     const { id, email_addresses, image_url, username, first_name, last_name } =
       evt.data;
 
@@ -89,7 +89,7 @@ export async function POST(req: Request) {
       path:`/profile/${id}`
     });
 
-    return  NextResponse.json({message:"ok",user:mongoUser}, { status: 200 });
+    return  NextResponse.json({message:"ok",user:mongoUser});
   }
   if (eventType === "user.deleted") {
     const { id} =
@@ -97,7 +97,7 @@ export async function POST(req: Request) {
 
     const deletedUser = await deleteUser({clerkId:id!})
 
-    return  NextResponse.json({message:"ok",user:deletedUser}, { status: 200 });
+    return  NextResponse.json({message:"ok",user:deletedUser});
   }
 
   return new Response("", { status: 200 });
