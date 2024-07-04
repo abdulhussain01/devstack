@@ -62,7 +62,7 @@ const UserSchema = new Schema({
       }],
       joinedAt: {
         type: Date,
-        required: Date.now
+        default: Date.now
       },
     
 }, {timestamps:true});
